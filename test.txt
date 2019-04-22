@@ -1,0 +1,2 @@
+zyx="select * from abc";
+abc="select * from abc"; yzxc="select * from abc"; qwe="select * from abc"; zxcxzc="insert * sfsdfs";
