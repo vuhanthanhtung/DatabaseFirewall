@@ -16,6 +16,26 @@ def scan_select(string):
 #        result.append(tmp)
     return result
 
+def scan_insert(string):
+    result=""
+    string=lower_string(string)
+    if("\"insert" in string):
+        tmp_str1=string.split("\"insert")[1]
+        tmp_str=tmp_str1.split("\"")[0]
+        tmp_str="insert"+tmp_str
+        result=tmp_str
+    return result
+
+def scan_update(string):
+    result=""
+    string=lower_string(string)
+    if("\"update" in string):
+        tmp_str1=string.split("\"update")[1]
+        tmp_str=tmp_str1.split("\"")[0]
+        tmp_str="update"+tmp_str
+        result=tmp_str
+    return result
+
 def Del_space(string):
     return string.strip()
 
