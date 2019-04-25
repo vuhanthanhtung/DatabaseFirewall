@@ -42,6 +42,17 @@ def Del_space(string):
 def split_multi_query(string):
     return Del_space(string).split(";")
 
+def Del_comment(string):
+    result=""
+    if "//" in Del_space(string)[0:2]:
+        return result
+    if ";//" in Del_space(string):
+        string=string.split(";//")[0]
+        result=string+";"
+        return result
+    return string
+
+
 #string="           zyx=\"select * from abc\" abc=\"select * from abc\"             "
 #string="    abc=\"     select * from avxc \"          ;        "
 #a=split_multi_query(string)
@@ -52,6 +63,11 @@ def split_multi_query(string):
 result=[]
 f = open("/var/www/html/basicwebsite/info.php","r").readlines()
 for i in f:
+    tmp=Del_comment(i)
+    if (tmp == ""):
+        continue
+    else:
+        i=tmp
     array = split_multi_query(i)
     if (len(array)!=1):
         for j in array:
