@@ -6,6 +6,8 @@ https://github.com/daveismyname/loginregister
 
 - Update code để quét được các file PHP có trong thư mục (chưa đệ quy được các file trong thư mục con của thư mục gốc, sẽ cập nhật thêm sau)
 
+- Update code để thêm tên file vào đầu mỗi list
+
 - Một số case chưa xử lí được:
 + Câu truy vấn nằm trong cặp dấu nháy đơn sẽ không lấy được (file index.php trong thư mục loginregister)
 
