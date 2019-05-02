@@ -1,0 +1,16 @@
+﻿- Nơi tải các file test: 
+https://github.com/petanikode/php-login-register
+https://github.com/daveismyname/loginregister
+
+- Thư mục loginregister và php-login-register là thư mục dùng để test (Cuối file code có biến path, thay biến path để test)
+
+- Update code để quét được các file PHP có trong thư mục (chưa đệ quy được các file trong thư mục con của thư mục gốc, sẽ cập nhật thêm sau)
+
+- Một số case chưa xử lí được:
++ Câu truy vấn nằm trong cặp dấu nháy đơn sẽ không lấy được (file index.php trong thư mục loginregister)
+
++ Truy vấn nằm trong comment vẫn bị lấy và đưa vào kết quả (trong trường hợp comment nằm trên cùng 1 hàng với lệnh PHP thông thường)
+
++ Một số truy vấn lọc ra có kèm theo dấu nháy kép. Ví d: ['resetPassword.php', "update members set password = :hashedpassword, resetcomplete = 'yes' where resettoken = :token "]
+
+
