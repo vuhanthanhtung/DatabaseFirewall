@@ -1,0 +1,14 @@
+﻿	Các testcase xử lí được
+- Xử lí được hầu hết các truy vấn thông thường là Select, Insert, Update
+
+- Truy vấn trong comment sẽ không lấy
+
+- Nhiều câu lệnh trên cùng 1 hàng cũng sẽ được tách và xử lí riêng biệt (multi-query)
+
+- Truy vấn được đặt trong dấu nháy đơn ' và nháy kép "
+
+- Trong câu lệnh có sử dụng nhiều dấu khoảng cách. Do code xét dựa trên "Select ... from ... where .... " nên sẽ có trường hợp là " Select .... " 
+
+- Bỏ qua các dòng code html hoặc các dòng code không liên quan đến query SQL
+
+- Giải quyết được trường hợp truy vấn nằm ở 2 dòng
