@@ -11,10 +11,17 @@ def scan_select(string):
         	tmp_str=tmp_str1.split("\"")[0]
         	tmp_str="select"+tmp_str
         	result=tmp_str
+	if ("\'select" in string):
+        	tmp_str1=string.split("\'select")[1]
+        	tmp_str=tmp_str1.split("\'")[0]
+        	tmp_str="select"+tmp_str
+        	result=tmp_str
+
 #        if(tmp_str2==""):
 #            return result
 #        tmp=scan_select(tmp_str2)
 #        result.append(tmp)
+
     	return result
 
 def scan_insert(string):
@@ -25,6 +32,12 @@ def scan_insert(string):
         	tmp_str=tmp_str1.split("\"")[0]
         	tmp_str="insert"+tmp_str
         	result=tmp_str
+	if ("\'insert" in string):
+        	tmp_str1=string.split("\'insert")[1]
+        	tmp_str=tmp_str1.split("\'")[0]
+        	tmp_str="insert"+tmp_str
+        	result=tmp_str
+
     	return result
 
 def scan_update(string):
@@ -35,6 +48,12 @@ def scan_update(string):
         	tmp_str=tmp_str1.split("\"")[0]
         	tmp_str="update"+tmp_str
         	result=tmp_str
+	if ("\'update" in string):
+        	tmp_str1=string.split("\'update")[1]
+        	tmp_str=tmp_str1.split("\'")[0]
+        	tmp_str="update"+tmp_str
+        	result=tmp_str
+
     	return result
 
 def Del_space(string):
@@ -109,6 +128,9 @@ def scanfile(file):
         	        		j=Replace_spaces_to_1_space(j)
         	        		if ("\" " in j):
                 	    			j=j.replace("\" ","\"")
+			                if ("\' " in j):
+	      		                        j=j.replace("\' ","\'")
+
                 			j=Del_space(j)
                 		if(scan_select(j)!= ""):
                 	    		result.append(scan_select(j))
