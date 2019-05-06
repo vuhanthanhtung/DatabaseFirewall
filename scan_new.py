@@ -62,13 +62,23 @@ def Del_space(string):
 def Del_all_space(string):
     	return string.replace(" ","")
 
+def Replace_spaces_to_1_space(string):
+    	while ("  " in string):
+        	string=string.replace("  "," ")
+    	return string
+
 def split_multi_query(string):
     	return Del_space(string).split(";")
 
 def Del_comment(string):   
     	result=""
+	string=Replace_spaces_to_1_space(string)
     	if "//" in Del_space(string)[0:2]:
         	return result
+    	if "; //" in Del_space(string):
+        	string=string.split("; //")[0]
+        	result=string+";"
+        	return result	
     	if ";//" in Del_space(string):
         	string=string.split(";//")[0]
         	result=string+";"
@@ -88,10 +98,6 @@ def check_sub_comma(string):
     	if (string[-1]!=";"):
         	flag=1
     	return flag
-def Replace_spaces_to_1_space(string):
-    	while ("  " in string):
-        	string=string.replace("  "," ")
-    	return string
 
 def scanfile(file):
 	result=[]
