@@ -1,4 +1,5 @@
 import os
+import glob
 def lower_string(string):
     	return string.lower()
 
@@ -146,12 +147,23 @@ def scanfile(file):
                 	    		result.append(scan_update(j))
     		save=""
 	print result
-path1 = "/root/Desktop/php-login-register/"
-path2 = "/root/Desktop/loginregister/"
-a = os.listdir(os.path.expanduser(path2))
-for i in a:
-        if ".php" in i:
-                scanfile(path2+i)
+
+# Getting the current work directory (cwd)
+# r=root, d=directories, f = files
+
+#path = "/root/Desktop/php-login-register/"
+path = "/root/Desktop/loginregister/"
+listfiles = []	
+for r, d, f in os.walk(path):
+	for file in f:
+		if ".php" in file:
+			listfiles.append(os.path.join(r, file))
+#print listfiles
+for i in listfiles:
+	scanfile(i)
+
+
+
 
 
 
