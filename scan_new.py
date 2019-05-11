@@ -1,5 +1,9 @@
 import os
 import glob
+import optparse
+import pyfiglet
+asciiart = pyfiglet.figlet_format("Dataabase Firewall")
+
 def lower_string(string):
     	return string.lower()
 
@@ -150,20 +154,51 @@ def scanfile(file):
 
 # Getting the current work directory (cwd)
 # r=root, d=directories, f = files
-
-#path = "/root/Desktop/php-login-register/"
-path = "/root/Desktop/loginregister/"
-listfiles = []	
-for r, d, f in os.walk(path):
-	for file in f:
-		if ".php" in file:
-			listfiles.append(os.path.join(r, file))
-#print listfiles
-for i in listfiles:
-	scanfile(i)
-
-
-
-
+#####################################################
+#Code parsearg
+usage = "usage: %prog -F framework -d directory -f file"
+parser = optparse.OptionParser(usage=usage)
+print asciiart
+parser.add_option('-d', action="store", dest="directory", default="None",
+                help="Path to directory of web application")
+parser.add_option('-F', action="store", dest="framework",
+                help="Choose the framework", default="PHP")
+parser.add_option('-f', action="store", dest="file",
+                help="Path to file of web application", default="None")
+options, args = parser.parse_args()
+if options.directory=="None" and options.file=="None":
+	parser.error('Path not given')
+directory = options.directory
+file = options.file
+Checkdir = 0
+Checkfile = 0
+if os.path.isdir(directory):
+	Checkdir = 1
+if os.path.isfile(file):
+	Checkfile = 1
+#####################################################
+listfiles=[]
+Result = 0
+if Checkdir == 1:
+	for r, d, f in os.walk(directory):
+		for files in f:
+			if ".php" in files:
+				listfiles.append(os.path.join(r, files))
+	Result +=1
+elif directory == "None":
+	Result +=1
+else:
+	print "Path to directory not found"
+if Checkfile == 1:
+	listfiles.append(file)
+	Result +=1
+elif file == "None":
+        Result +=1
+else:
+	print "Path to file not found"
+if Result == 2:
+	print listfiles
+	for i in listfiles:
+		scanfile(i)
 
 
